@@ -7,6 +7,7 @@ global class DailyLeadProcessor implements Schedulable {
             l.leadSource = 'Dreamforce';
             leadsToUpdate.add(l);
         }
+        System.debug('leadsToUpdate : '+leadsToUpdate);
         update leadsToUpdate;
     }
 }
