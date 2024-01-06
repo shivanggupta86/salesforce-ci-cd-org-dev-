@@ -1,0 +1,16 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 11-02-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Custom Event">
+        <lightning-button class="slds-m-around_medium" label="Show Modal" onclick={showModal}></lightning-button>
+        <template if:true={isVisible}>
+            isVisible=true 
+            <c-custom-event onclose={closeHandler}></c-custom-event>
+        </template>
+    </lightning-card>
+</template>

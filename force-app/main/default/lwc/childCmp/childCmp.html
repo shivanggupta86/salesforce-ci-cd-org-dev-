@@ -1,0 +1,20 @@
+<template>
+    <!-- <p>{userData.Name}</p>
+    <p>{userData.Age}</p>
+    <p>{userData.Company}</p> -->
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            <div>What is your Name?</div>
+            <div>
+                <slot name="first"></slot>
+            </div>
+            <div>What is your Age?</div>
+            <div>
+                <slot name="second"></slot>
+            </div>
+            <footer class="slds-card__footer slds-hide">
+                <slot name="footer" onslotchange={handleSlotChange}></slot>
+            </footer>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,11 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name = "message" type = "String"/>
+    <p>message is : {!v.message}</p>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:button label = "button1" onclick="{!c.handler}"/>
+    <lightning:button label = "button2" onclick="{!c.handler}"/>
+    
+    <aura:attribute name="Object" type="Object"/>
+    <p>object value : {!v.Object.name}</p>
+</aura:component>

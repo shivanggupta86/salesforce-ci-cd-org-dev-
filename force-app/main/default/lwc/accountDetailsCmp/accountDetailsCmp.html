@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Account Details">
+        <div class="slds-m-around_medium">
+            <lightning-input class="slds-m-around_medium" type="search" label="Account Name" name="Account" onchange={changeHandler}></lightning-input>
+            <div class="slds-m-top_small">
+                <!-- <template for:each={data} for:item="account">
+                    <div key={account.Id}>
+                        <p>{account.Name}</p>
+                        <p>{account.Phone}</p><br>
+                        <template lwc:if={account.Contacts}>
+                            <strong>Contact Details</strong>
+                            <template for:each={account.Contacts} for:item="contact">
+                                <div key={contact.Id}>
+                                    <p>{contact.Name}</p>
+                                    <p>{contact.Phone}</p>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                </template> -->
+            </div>
+        </div>
+    </lightning-card>
+</template>

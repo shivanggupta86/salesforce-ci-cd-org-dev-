@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Parent Cmp">
+        <!-- <p>First User Name : {firstUser}</p>
+        <c-child-cmp userdetail = {userDetail}></c-child-cmp> -->
+        <div>
+            <c-child-cmp>
+                <p slot="first">My Name is Shivang.</p>
+                <p slot="second">I am {age}.</p>
+                <p slot="footer">I am footer</p>
+            </c-child-cmp>
+            <c-child-cmp>
+                <p slot="first">My Name is Shivang.</p>
+                <p slot="second">I am {age}.</p>
+            </c-child-cmp>
+        </div>
+    </lightning-card>
+</template>

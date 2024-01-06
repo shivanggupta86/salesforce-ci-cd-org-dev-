@@ -1,0 +1,28 @@
+<template>
+    <lightning-card title="Account and Contact Creation">
+        <lightning-tabset>
+            <lightning-card>
+                <lightning-tab label="New Contact">
+                    <!-- <p class="slds-p-around_medium" style="font-size: large;"><b></b></p> -->
+                    <div>Name</div>
+                    <div class="slds-grid slds-wrap slds-m-left_medium">
+                        <div class="slds-col slds-size_3-of-12">
+                            <lightning-input label="First Name" type="text"></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_3-of-12 slds-m-left_large">
+                            <lightning-input label="Last Name" type="text"></lightning-input>
+                        </div>
+                    </div>
+                </lightning-tab>
+                <lightning-button-group slot="actions">
+                    <lightning-button label="Add Contact" icon-name="action:add_contact"></lightning-button>
+                    <lightning-button label="Delete" variant="destructive"
+                        icon-name="utility:delete"></lightning-button>
+                </lightning-button-group>
+            </lightning-card>
+
+        </lightning-tabset>
+
+
+    </lightning-card>
+</template>

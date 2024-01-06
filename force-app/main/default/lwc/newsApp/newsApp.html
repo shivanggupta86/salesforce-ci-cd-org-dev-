@@ -1,0 +1,185 @@
+<template>
+    <lightning-card title="Search News" icon-name="standard:news">
+
+        <lightning-button class="slds-m-right_xx_small" variant="brand" label="Bookmark Manager"
+            icon-name="utility:save" slot="actions" onclick={handleModal}></lightning-button>
+
+        <!-- Modal Component -->
+        <template lwc:if={showModal}>
+            <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+                class="slds-modal slds-fade-in-open slds-modal_small slds-backdrop">
+                <div class="slds-modal__container">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        onclick={handleModal} style="background-color: aliceblue;">
+                        <lightning-icon icon-name="utility:close" alternative-text="close" size="small">
+                        </lightning-icon>
+                    </button>
+                    <div class="slds-modal__header slds-theme_shade">
+                        <h1 class="slds-modal__title slds-hyphenate" tabindex="-1">Saved Articles</h1>
+                    </div>
+                    <div class="slds-modal__content" id="modal-content-id-1">
+                        <template lwc:if={showTable}>
+                            <!-- Datatable Component Starts -->
+
+                            <table aria-multiselectable="true"
+                                class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols"
+                                role="grid" aria-label="Example advanced table of Opportunities in actionable mode"
+                                style="padding:10px;">
+
+                                <thead>
+                                    <!-- Headers Starts -->
+                                    <tr class="slds-line-height_reset">
+                                        <th class="slds-text-align_right slds-cell_action-mode" scope="col"
+                                            style="width:3.25rem">
+                                        </th>
+                                        <th aria-label="Title" aria-sort="none"
+                                            class="slds-is-resizable slds-is-sortable slds-cell_action-mode" scope="col"
+                                            style="width: 60%;">
+                                            <a class="slds-th__action slds-text-link_reset" href="#" role="button"
+                                                tabindex="0">
+                                                <div
+                                                    class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                    <span class="slds-truncate" title="Name">Title</span>
+                                                </div>
+                                            </a>
+                                            <div class="slds-resizable">
+                                                <input type="range" aria-label="Name column width"
+                                                    class="slds-resizable__input slds-assistive-text"
+                                                    id="cell-resize-handle-589" max="1000" min="20" tabindex="0" />
+                                                <span class="slds-resizable__handle">
+                                                    <span class="slds-resizable__divider"></span>
+                                                </span>
+                                            </div>
+                                        </th>
+                                        <th aria-label="Source" aria-sort="none"
+                                            class="slds-is-resizable slds-is-sortable slds-cell_action-mode"
+                                            scope="col">
+                                            <a class="slds-th__action slds-text-link_reset" href="#" role="button"
+                                                tabindex="0">
+                                                <span class="slds-assistive-text">Sort by: </span>
+                                                <div
+                                                    class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                    <span class="slds-truncate" title="Account Name">Source</span>
+                                                </div>
+                                            </a>
+                                            <div class="slds-resizable">
+                                                <input type="range" aria-label="Account Name column width"
+                                                    class="slds-resizable__input slds-assistive-text"
+                                                    id="cell-resize-handle-590" max="1000" min="20" tabindex="0" />
+                                                <span class="slds-resizable__handle">
+                                                    <span class="slds-resizable__divider"></span>
+                                                </span>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <!-- Headers Ends -->
+                                </thead>
+
+
+                                <tbody>
+                                    <template lwc:if={savedNews} for:each={savedNews} for:item="item">
+                                        <tr aria-selected="false" class="slds-hint-parent" key={item.Id}>
+                                            <td class="slds-text-align_right slds-cell_action-mode" role="gridcell">
+                                                <div class="slds-checkbox">
+                                                    <lightning-button-icon icon-name="utility:delete" variant="brand"
+                                                        alternative-text="Delete" onclick={deleteHandler}
+                                                        class="slds-m-around_xx-small"
+                                                        title={item.Id}></lightning-button-icon>
+                                                </div>
+                                            </td>
+                                            <th class="slds-cell_action-mode" scope="row">
+                                                <div class="slds-truncate" title={item.Name}>
+                                                    <a href={item.newsURL__c} target="_blank"
+                                                        tabindex="0">{item.Name}</a>
+                                                </div>
+                                            </th>
+                                            <td class="slds-cell_action-mode" role="gridcell">
+                                                <div class="slds-truncate" title={item.Source__c}>{item.Source__c}</div>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+
+                            <!-- Datatable Component Ends -->
+                        </template>
+                        <template lwc:else>
+                            <div class="slds-m-around_medium" style="text-align: center;">
+                                No Articles Found.
+                            </div>
+                        </template>
+
+
+                    </div>
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button_destructive" onclick={deleteAllHandler}>Delete All</button>
+                    </div>
+                </div>
+
+            </section>
+        </template>
+
+
+        <lightning-layout multiple-rows="">
+            <div class="slds-m-around_small">
+                <lightning-layout-item size="1">
+                    <lightning-button-stateful class="slds-m-right_medium" label-when-off="India" label-when-on="India"
+                        label-when-hover="Unfollow" icon-name-when-off="utility:add" icon-name-when-on="utility:check"
+                        title="India" icon-name-when-hover="utility:close" selected={isIndiaSelected}
+                        onclick={handleClick}>
+                    </lightning-button-stateful>
+                </lightning-layout-item>
+                <lightning-layout-item size="1">
+                    <lightning-button-stateful class="slds-m-right_medium" label-when-off="USA" label-when-on="USA"
+                        label-when-hover="Unfollow" icon-name-when-off="utility:add" icon-name-when-on="utility:check"
+                        title="USA" icon-name-when-hover="utility:close" selected={isUSASelected} onclick={handleClick}>
+                    </lightning-button-stateful>
+                </lightning-layout-item>
+                <lightning-layout-item size="1">
+                    <lightning-button-stateful label-when-off="UK" label-when-on="UK" label-when-hover="Unfollow"
+                        icon-name-when-off="utility:add" icon-name-when-on="utility:check" title="UK"
+                        icon-name-when-hover="utility:close" selected={isUKSelected} onclick={handleClick}>
+                    </lightning-button-stateful>
+                </lightning-layout-item>
+            </div>
+        </lightning-layout>
+
+
+        <lightning-layout multiple-rows>
+            <template if:true={showData}>
+                <template for:each={articles} for:item="article">
+                    <lightning-layout-item size="3" padding="around-small" key={article.title}>
+                        <lightning-card>
+                            <div class="card">
+                                <template lwc:if={article.urlToImage}>
+                                    <img class="img" src={article.urlToImage} title={article.author} />
+                                </template>
+                                <template lwc:else>
+                                    <img class="img" src="https://techcrams.com/wp-content/uploads/2022/09/News.jpg" />
+                                </template>
+
+                                <div class="slds-m-around_small slds-p-bottom-small slds-line-clamp_x-small"
+                                    style="text-align: center;">
+                                    <Strong><a href={article.url} target="_blank">{article.title}</a></Strong><br>
+                                </div>
+                                <div class="slds-m-around_medium">
+                                    <lightning-button-group class="buttonGroup">
+                                        <lightning-button label="Save for Later" icon-name="utility:save"
+                                            onclick={saveHandler} title={article.title}></lightning-button>
+                                        <lightning-button title={article.url} label="Read More" variant="brand"
+                                            icon-name="utility:outcome" onclick={readMoreHandler}></lightning-button>
+                                    </lightning-button-group>
+                                </div>
+                            </div>
+                        </lightning-card>
+                    </lightning-layout-item>
+                </template>
+            </template>
+
+            <template if:false={isLoaded}>
+                <lightning-spinner alternative-text="Loading...">
+                </lightning-spinner>
+            </template>
+        </lightning-layout>
+    </lightning-card>
+</template>

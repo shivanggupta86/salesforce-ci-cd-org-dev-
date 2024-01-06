@@ -1,0 +1,20 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 11-02-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Custom Validation3">
+        <div class="slds-m-around_medium">
+            <lightning-input class="Name" title="Name" type="text" label="Name" field-level-help="Name must be greater than 5 letters"></lightning-input>
+            <lightning-input class="AnnualRevenue" title="AnnualRevenue" type="currency" label="Annual Revenue" field-level-help="Value must be greater than 1000">
+            </lightning-input>
+        </div>
+        <lightning-button class="slds-m-around_medium" variant="brand" label="validate" onclick={clickHandler}>
+        </lightning-button>
+    </lightning-card>
+
+
+</template>

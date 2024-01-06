@@ -1,0 +1,16 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title = "Custom Validation 2">
+        <lightning-record-edit-form object-api-name={objectName} onsubmit={submitHandler}>
+            <lightning-input type="text" title = "name" label="Name" value = {inputValue} onkeyup={handleInput}></lightning-input>
+            <lightning-input type="number" title ="annualRevenue" label="Annual Revenue" value = {inputValue2} onkeyup={handleInput}></lightning-input>
+            <lightning-button class="slds-m-around_small" variant="brand" label="Create" type="submit"></lightning-button>
+        </lightning-record-edit-form>
+    </lightning-card>
+</template>

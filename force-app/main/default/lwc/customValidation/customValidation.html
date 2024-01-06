@@ -1,0 +1,15 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 10-30-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Custom Validation">
+        <lightning-record-edit-form object-api-name={objectName} onsuccess={successHandler} onerror={errorHandler} onsubmit={submitHandler}>
+            <lightning-input label="Name" value={inputValue} onkeyup={handleChange}></lightning-input>
+            <lightning-button variant="brand" type="submit" class="slds-m-around_xx-small" label="Save" ></lightning-button>
+        </lightning-record-edit-form>
+    </lightning-card>
+</template>

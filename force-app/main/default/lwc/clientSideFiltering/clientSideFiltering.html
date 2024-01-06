@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Client Side Filtering">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+
+                <tr class="slds-line-height_reset">
+                    <template for:each={headings} for:item="heading">
+                        <th key={heading} scope="col"> {heading} </th>
+                    </template>
+                </tr>
+
+
+            </thead>
+            <tbody>
+                <tr class="slds-hint-parent">
+                    <th scope="row"> Cloudhub </th>
+                    <th scope="row"> Cloudhub </th>
+                    <th scope="row"> 4/14/2015 </th>
+                    <th scope="row"> Prospecting </th>
+
+                </tr>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>

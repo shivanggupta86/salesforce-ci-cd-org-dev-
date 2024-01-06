@@ -1,0 +1,19 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 11-01-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Custom Validation for Salesforce Records ">
+        <lightning-record-edit-form object-api-name={objectName} onsubmit={saveHandler} onsuccess={successHandler} onerror={errorHandler}>
+        <div class="slds-m-around_medium">
+            <lightning-input class="Name" title = "Name" type="text" label="Name"></lightning-input>
+            <lightning-input class="AnnualRevenue" title = "AnnualRevenue" type="currency" label="Annual Revenue"></lightning-input>
+        </div>
+        <lightning-button class="slds-m-around_medium" type="submit" variant="brand" label="validate" >
+        </lightning-button>
+    </lightning-record-edit-form>
+    </lightning-card>
+</template>

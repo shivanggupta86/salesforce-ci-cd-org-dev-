@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Contacts Pagination">
+        <template for:each={totalContacts} for:item="contact">
+            <p key={contact.Id} class="slds-m-around_medium">{contact.Name}</p>
+        </template>
+        <div slot="footer">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="4" padding="around-small">
+                    <lightning-button variant="brand" label="Previous" icon-name="utility:chevronleft"
+                        onclick={previousHandler}></lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" padding="around-small">
+                    Displaying this out of this
+                </lightning-layout-item>
+                <lightning-layout-item size="4" padding="around-small">
+                    <lightning-button variant="brand" label="Next" icon-name="utility:chevronright"
+                        onclick={nextHandler}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <c-pagination-utility-component total-items={totalContacts}></c-pagination-utility-component>
+    </lightning-card>
+</template>

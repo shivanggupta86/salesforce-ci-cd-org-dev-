@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="CSV utility demo">
+        <template for:each={accountData} for:item="account">
+            <div key={account.Id}>
+                <p>{account.Name} {account.AnnualRevenue}, {account.Industry}</p>
+            </div>
+        </template>
+        <lightning-button variant="brand" label="download account data" onclick={downloadAccountData}></lightning-button>
+    </lightning-card>
+</template>
